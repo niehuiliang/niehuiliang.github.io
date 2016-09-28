@@ -1,0 +1,64 @@
+.introduce{
+    border-top: 5px solid #efefef;
+    background: #f9f9f9;
+    position: relative;
+}
+.comtuinte-lefter{
+    width: 800px;
+    float: left;
+}
+.loving{
+    width: 595px;
+    margin-top: 34px;
+    padding-top: 19px;
+
+}
+.loving-a{
+    font-size: 29px;
+    color: #fe7565;
+}
+.loving-b{
+    font-size: 20px;
+    margin-top: 28px;
+    color: #a4a4a4;
+}
+.made{
+    width: 490px;
+    padding: 23px 27px 0 0;
+    border-top: 1px solid #e2e2e2;
+    font-size: 15px;
+    line-height: 28px;
+    margin-top: 25px;
+    color: #656565;
+}
+.img-comput{
+    float: right;
+    margin-top: -400px;
+}
+.purc{
+    width: 180px;
+    padding: 15px 70px 16px 29px;
+    font-size: 24px;
+    color: #fff;
+    background: #ff5842 url("../images/btn.png") no-repeat 230px 22px;
+    margin-top: 72px;
+    cursor: pointer;
+}
+.btn{
+    width: 40px;
+    height: 41px;
+    line-height: 40px;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    margin-top: -10px;
+    background: #eee;
+    cursor: pointer;
+
+}
+.left{
+    left: 10px;
+}
+.right{
+    right: 10px;
+}
