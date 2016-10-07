@@ -14,16 +14,61 @@ window.onload = function () {
         animate(snipesfreed,{left:0});
     };
     
+    var wesleySnipes = document.querySelectorAll('.wesley-snipes');
+    var wesleySnipesTax = document.querySelectorAll('.wesley-snipes-tax');
+    
+    var lens = wesleySnipes.length;
+    for (var i=0;i<lens;i++){
+        wesleySnipes[i].index=i;
+        wesleySnipes[i].onmouseover = function () {
+            console.log(this.index);
+            for(var j=0;j<lens;j++){
+                if (j==this.index){
+                    console.log(j);
+                    animate(wesleySnipesTax[j],{top:0});
+                }
+            }
+        };
+        wesleySnipes[i].onmouseout = function () {
+            console.log(this.index);
+            for(var j=0;j<lens;j++){
+                if (j==this.index){
+                    console.log(j);
+                    animate(wesleySnipesTax[j],{top:223});
+                }
+            }
+        };
+    }
+    
+    
+    
+    
+    
+    
+    
     
     var hotclicka = document.querySelector('.hot-click-a');
     var hotclickb = document.querySelector('.hot-click-b');
-    var evilimg = document.querySelector('.evil-img');
-    var len = document.querySelector('.evil-img').getElementsByTagName('li').length;
-    var cur = 0;
+    var evilimg = document.querySelector('#evilImg');
+    var dead = document.querySelector('.dead-p-a-b');
+    var len1 = evilimg.getElementsByTagName('li').length;
+    var cur = 1;
 
-    hotclicka.onclick = function () {
+
+    setInterval(function () {
         cur++;
-        if (cur==len-1){
+        if (cur==len1-1){
+            cur=1;
+            evilimg.style.left = 0;
+            dead.style.top = 0;
+        }
+        animate(evilimg,{left:-880*cur});
+        animate(dead,{top:-120*cur});
+    },1000)
+
+    hotclickb.onclick = function () {
+        cur++;
+        if (cur==len1-1){
             cur=1;
             evilimg.style.left = 0;
         }
@@ -33,16 +78,27 @@ window.onload = function () {
     };
     
     
-    hotclickb.onclick = function () {
-        // alert(getComputedStyle(evilimg,null).left)
-        cur++;
-        if (cur == len-1){
-            cur == 0;
+    hotclicka.onclick = function () {
+        if (cur == 1){
+            cur = len1-1;
             evilimg.style.left = -880*cur+'px';
-            // getComputedStyle(evilimg,null).left = -880*cur+'px';
         }
-        animate(evilimg,{left:880*cur})
+        cur--;
+        animate(evilimg,{left:-880*cur})
     };
+
+    // hotclicka.onclick = function () {
+    //
+    //     if(cur == 1){
+    //         cur = len1-1;
+    //         evilimg.style.left = -880*cur+'px';
+    //         console.log(evilimg.style.left)
+    //     }
+    //     cur--;
+    //     animate(evilimg,{left:-880*cur});
+    // };
+
+
     function animate(obj,json,fn) {
         //避免连续点击
         clearInterval(obj.timer);
@@ -86,6 +142,64 @@ window.onload = function () {
         }
         return result;
     }
-    
-    
+
+
+    var navPopular = document.getElementById('navPopular').getElementsByTagName('li');
+    var len2 = navPopular.length;
+    var howBudget = document.getElementById('howBudget');
+    for(var i=0;i<len2;i++){
+        navPopular[i].index = i;
+        navPopular[i].onclick = function () {
+            for(var j=0;j<len2;j++){
+                if (j==this.index){
+                    animate(howBudget,{left:-285*j});
+                    this.className = 'on';
+                }else {
+                    navPopular[j].className = '';
+                }
+            }
+
+
+        };
+    }
+
+
+    var environmentLeft = document.getElementById('environmentLeft');
+    var environmentRight = document.getElementById('environmentRight');
+    var environmentTop = document.getElementById('environmentTop');
+    var dreamingFrom = document.getElementById('dreamingFrom');
+    var curr = 1;
+    var len3 = environmentTop.getElementsByTagName('li').length;
+
+    environmentLeft.onclick = function () {
+
+        if(curr == 1){
+            curr = len3-1;
+            environmentTop.style.left = -880*curr+'px';
+            // console.log(environmentTop.style.left)
+        }
+        curr--;
+        animate(environmentTop,{left:-880*curr});
+    };
+
+    environmentRight.onclick = function () {
+        curr++;
+        if(curr == len3-1){
+            curr = 1;
+            environmentTop.style.left = 0;
+        }
+        animate(environmentTop,{left:-880*curr});
+    };
+    setInterval(function () {
+        if(curr == 1){
+            curr = len3-1;
+            environmentTop.style.left = -880*curr+'px';
+            dreamingFrom.style.top = -170*curr+'px';
+            // console.log(environmentTop.style.left)
+        }
+        curr--;
+        animate(environmentTop,{left:-880*curr});
+        animate(dreamingFrom,{top:-170*curr});
+    },1000)
+
 };
